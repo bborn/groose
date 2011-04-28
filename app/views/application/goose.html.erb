@@ -1,0 +1,37 @@
+<form action="/goose">
+	
+	<%= text_field_tag 'url', params[:url], :size => 100 %>
+	<%= submit_tag 'Crawl' %>
+	
+</form>
+
+<h2>Crawling: <%= link_to params[:url], params[:url] %></h2>
+
+<h3><%= @article.title %></h3>
+
+<p>
+	<%= @article.metaDescription %>
+</p>
+
+
+<p>
+	<%= raw @article.cleanedArticleText %>
+</p>
+
+
+<p>
+	<%= @article.metaKeywords %>
+</p>
+
+<p>
+	<%= @article.domain %>
+</p>
+
+
+<p>
+	<%= image_tag(@article.topImage.imageSrc) if @article.topImage && @article.topImage.imageSrc %>
+	
+	<br />
+	
+	<%= @article.imageCandidates.join(',') %>
+</p>
